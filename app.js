@@ -37,7 +37,7 @@ const buildSet = (n, a, b, realNum, imagNum) => {
         return [map(n, 0, iterations, 0, 255), true]
     }
     if (n < iterations) {
-        return buildSet(++n, realNum + a, imagNum + b, a, b)
+        return buildSet(++n, a, b, realNum + a, imagNum + b)
     }
     return [0, false]
 }
