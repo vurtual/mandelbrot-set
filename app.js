@@ -37,13 +37,11 @@ const nav = {
         x:0, y:0
     },    
     updatePosition: (moveX, moveY) => {
-        console.log("nav");
         nav.position.x += moveX / nav.currentZoom
         nav.position.y += moveY / nav.currentZoom
         yPixel(0)
     },    
     updateZoom: zoom => {
-        console.log("zoom");
         nav.currentZoom += nav.step
         if (nav.currentZoom / nav.step > 20) nav.step *= 2
         else if (nav.current / nav.step < 5) nav.step /= 2
