@@ -42,7 +42,7 @@ const nav = {
         yPixel(0)
     },    
     updateZoom: zoom => {
-        nav.currentZoom += nav.step
+        nav.currentZoom += (nav.step + zoom)
         if (nav.currentZoom / nav.step > 20) nav.step *= 2
         else if (nav.current / nav.step < 5) nav.step /= 2
         target += nav.step
