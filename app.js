@@ -12,8 +12,8 @@ const map = (num, origMin, origMax, targMin, targMax) => {
     return targMin + targRange * (num - origMin) / origRange
 }
 
-const iterations = 15 //Math.floor(Math.random() * 100)
-let target = 8 //Math.floor(Math.random() * 1024)
+const iterations = 100 //Math.floor(Math.random() * 100)
+let target = 16 //Math.floor(Math.random() * 1024)
 
 const xPixel = (x, y) => {
     let a = map(x, 0, w, nav.position.x - 2/nav.currentZoom, nav.position.x + 2/nav.currentZoom)
