@@ -14,26 +14,6 @@ const map = (num, origMin, origMax, targMin, targMax) => {
 
 const iterations = 15 //Math.floor(Math.random() * 100)
 let target = 8 //Math.floor(Math.random() * 1024)
-const nav = {
-    currentZoom: 1,
-    step: 0.1,
-    ratio: 0.1,
-    position: {
-        x:0, y:0
-    },
-    updatePosition: (moveX, moveY) => {
-        console.log("nav");
-        nav.position.x += moveX / nav.currentZoom
-        nav.position.y += moveY / nav.currentZoom
-    },
-    updateZoom: zoom => {
-        console.log("zoom");
-        nav.currentZoom += nav.step
-        if (nav.currentZoom / nav.step > 20) nav.step *= 2
-        else if (nav.current / nav.step < 5) nav.step /= 2
-        target += nav.step
-    }
-}
 
 const xPixel = (x, y) => {
     let a = map(x, 0, w, nav.position.x - 2/nav.currentZoom, nav.position.x + 2/nav.currentZoom)
@@ -48,6 +28,29 @@ const yPixel = y => {
     xPixel(0, y)
     if (y < h) yPixel(++y)
 }
+
+const nav = {
+    currentZoom: 1,
+    step: 0.1,
+    ratio: 0.1,
+    position: {
+        x:0, y:0
+    },    
+    updatePosition: (moveX, moveY) => {
+        console.log("nav");
+        nav.position.x += moveX / nav.currentZoom
+        nav.position.y += moveY / nav.currentZoom
+        yPixel(0)
+    },    
+    updateZoom: zoom => {
+        console.log("zoom");
+        nav.currentZoom += nav.step
+        if (nav.currentZoom / nav.step > 20) nav.step *= 2
+        else if (nav.current / nav.step < 5) nav.step /= 2
+        target += nav.step
+        yPixel(0)
+    }    
+}    
 
 const buildSet = (n, a, b, realNum, imagNum) => {
     realNum = realNum * realNum - imagNum * imagNum
